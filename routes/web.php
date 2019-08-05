@@ -299,4 +299,4 @@ Route::get('{name?}', 'FrontEndController@showFrontEndView');
 
 
 
-Route::get('admin/reporter/filterbydate','ReporterController@filterbydate')->name('reporter.filterbydate');
+//Route::get('admin/reporter/filterbydate','ReporterController@filterbydate')->name('reporter.filterbydate');

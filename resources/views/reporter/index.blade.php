@@ -58,29 +58,30 @@
     </section>
     <!--section ends-->
     <section class="content pl-3 pr-3">
-        <form action="{{route('reporter.filterbydate')}}" method="GET">
+        <form action="{{route('reporter.index')}}" method="GET">
             @csrf
-        <div class="col-md-6 col-lg-6 col-12 my-3">
-            <div class="card ">
-                <div class="card-body">
-                    <div class="box-body">
-                        <div class="form-group">
-                            <label>
-                                Predefined Range:
-                            </label>
-                            <div class="input-group">
-                                <div class="input-group-append">
-                                      <span class="input-group-text"> <i class="livicon" data-name="phone" data-size="16" data-c="#555555"
+            <div class="col-md-6 col-lg-6 col-12 my-3">
+                <div class="card ">
+                    <div class="card-body">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label>
+                                    Predefined Range:
+                                </label>
+                                <div class="input-group">
+                                    <div class="input-group-append">
+                                      <span class="input-group-text"> <i class="livicon" data-name="phone"
+                                                                         data-size="16" data-c="#555555"
                                                                          data-hc="#555555" data-loop="true"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control" id="daterange3" name="daterange3"/>
+                                    <button type="submit" class="btn btn-info  mr-2">Submit</button>
                                 </div>
-                                <input type="text" class="form-control" id="daterange3" name="daterange3"/>
-                                <button type="submit" class="btn btn-info  mr-2">Submit</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
         </form>
         <div class="row">
             <div class="col-lg-12 my-3">
@@ -108,17 +109,31 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($reporters as $key => $reporter)
-                                <tr>
-                                    <td>{{$reporter->post_id}}</td>
-                                    <td>{{$reporter->user_id}}</td>
-                                    <td>{{$reporter->royalty_type}}</td>
-                                    <td>
-                                        {{(\App\Reporter::where('post_id', $reporter->post_id)->sum('royalty'))}}
-                                    </td>
-                                    <td>{{$reporter->created_at}}</td>
-                                </tr>
-                            @endforeach
+                            @if($daterange==null)
+                                @foreach($reporters as $key => $reporter)
+                                    <tr>
+                                        <td>{{$reporter->post_id}}</td>
+                                        <td>{{$reporter->user_id}}</td>
+                                        <td>{{$reporter->royalty_type}}</td>
+                                        <td>
+                                            {{(\App\Reporter::where('post_id', $reporter->post_id)->sum('royalty'))}}
+                                        </td>
+                                        <td>{{$reporter->created_at}}</td>
+                                    </tr>
+                                @endforeach
+                            @else
+                                @foreach($reportersFilter as $key => $reporter)
+                                    <tr>
+                                        <td>{{$reporter->post_id}}</td>
+                                        <td>{{$reporter->user_id}}</td>
+                                        <td>{{$reporter->royalty_type}}</td>
+                                        <td>
+                                            {{(\App\Reporter::where('post_id', $reporter->post_id)->sum('royalty'))}}
+                                        </td>
+                                        <td>{{$reporter->created_at}}</td>
+                                    </tr>
+                                @endforeach
+                            @endif
                             </tbody>
                         </table>
                     </div>
