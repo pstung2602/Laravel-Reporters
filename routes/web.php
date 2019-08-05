@@ -173,7 +173,7 @@ Route::group(['prefix' => 'admin','namespace'=>'Admin', 'middleware' => 'admin',
 
 
     Route::get('reporter','ReporterController@index')->name('reporter.index');
-    Route::get('reporter/filterbydate','ReporterController@filterbydate')->name('reporter.filterbydate');
+
 
 
 
@@ -299,4 +299,4 @@ Route::get('{name?}', 'FrontEndController@showFrontEndView');
 
 
 
-
+Route::get('admin/reporter/filterbydate','ReporterController@filterbydate')->name('reporter.filterbydate');

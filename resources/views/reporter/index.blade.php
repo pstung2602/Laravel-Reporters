@@ -58,7 +58,7 @@
     </section>
     <!--section ends-->
     <section class="content pl-3 pr-3">
-        <form action="{{route('admin.reporter.filterbydate')}}" method="GET">
+        <form action="{{route('reporter.filterbydate')}}" method="GET">
             @csrf
         <div class="col-md-6 col-lg-6 col-12 my-3">
             <div class="card ">
@@ -74,7 +74,7 @@
                                                                          data-hc="#555555" data-loop="true"></i></span>
                                 </div>
                                 <input type="text" class="form-control" id="daterange3" name="daterange3"/>
-                                <input type="submit">
+                                <button type="submit" class="btn btn-info  mr-2">Submit</button>
                             </div>
                         </div>
                     </div>
