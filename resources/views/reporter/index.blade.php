@@ -58,14 +58,29 @@
     </section>
     <!--section ends-->
     <section class="content pl-3 pr-3">
-        <h3>Tìm theo ngày</h3>
-        <form action="{{route('reporter.filterbydate')}}" method="GET">
+        <form action="{{route('admin.reporter.filterbydate')}}" method="GET">
             @csrf
-            <div class="form-group">
-                <input type="date" name="datestart">
-                <input type="date" name="dateend">
-                <input type="submit">
+        <div class="col-md-6 col-lg-6 col-12 my-3">
+            <div class="card ">
+                <div class="card-body">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label>
+                                Predefined Range:
+                            </label>
+                            <div class="input-group">
+                                <div class="input-group-append">
+                                      <span class="input-group-text"> <i class="livicon" data-name="phone" data-size="16" data-c="#555555"
+                                                                         data-hc="#555555" data-loop="true"></i></span>
+                                </div>
+                                <input type="text" class="form-control" id="daterange3" name="daterange3"/>
+                                <input type="submit">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
         </form>
         <div class="row">
             <div class="col-lg-12 my-3">
